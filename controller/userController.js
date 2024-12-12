@@ -43,7 +43,7 @@ const loginUser = asyncHandler(async (req, res) => {
                 email: user.email,
                 id: user.id
             }
-        }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "1m"})
+        }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "15m"})
         res.status(200).json({ accessToken })
     } else {
         res.status(401)
@@ -53,7 +53,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
 //Current User
 const currentUser = asyncHandler(async (req, res) => {
-    res.json({ message: "Current user" })
+    res.json(req.user)
 })
 
 module.exports = { registerUser, loginUser, currentUser }
